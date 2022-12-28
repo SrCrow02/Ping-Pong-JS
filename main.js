@@ -41,15 +41,13 @@ function draw() {
   mostraRaquete(xOponente, yOponente);
   movimentaMinhaRaquete();
   movimentaRaqueteOponente();
-  //verificaColisaoRaquete();
+  verificaColisaoRaquete();
   //colisaoRaquetebiblioteca(xRaquete,yRaquete);
   //colisaoRaquetebiblioteca(xOponente,yOponente);
   incluiPlacar(meusPontos,150,26);
   incluiPlacar(pontosOponente,450,26);
   marcaPonto();
 }
-
-
 
 function mostraBolinha()
 {
@@ -97,9 +95,12 @@ function verificaColisaoRaquete()
   if (xBolinha-raio < xRaquete+lRaquete && yBolinha-raio < yRaquete+aRaquete && yBolinha+raio > yRaquete)
   {
     velocidadeXBolinha *= -1;
-    //velocidadeYBolinha *= -1;
+    velocidadeYBolinha *= -1;
   }
-  
+  if (xBolinha + raio > xOponente - lOponente && yBolinha + raio > yOponente - aOponente && yOponente - raio < yOponente ){
+    velocidadeXBolinha *= -1;
+    velocidadeYBolinha *= -1;
+  }
 }
 
 function movimentaRaqueteOponente()
